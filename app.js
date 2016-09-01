@@ -1,8 +1,8 @@
-var fs = require('fs-extra');
-var path = require('path');
-var bigDecimal = require('big-decimal'); 
-var inputFolderPath = '/Users/mateus/Documents/repositorios/github/ilegraApp/data/in/';
-var outputFilePath = '/Users/mateus/Documents/repositorios/github/ilegraApp/data/out/flat_file_name.done.dat';
+const fs = require('fs-extra');
+const path = require('path');
+const bigDecimal = require('big-decimal'); 
+const inputFolderPath = '/Users/mateus/Documents/repositorios/github/ilegraApp/data/in/';
+const outputFilePath = '/Users/mateus/Documents/repositorios/github/ilegraApp/data/out/flat_file_name.done.dat';
 
 fs.watch(inputFolderPath, () => {
   fs.remove(outputFilePath);
@@ -53,10 +53,9 @@ function processFiles() {
       }
     }
 
-     fs.appendFileSync(outputFilePath, 
-        'SalesMan:'+salesMan+"\n"+'Customers:'+customers+"\n"+
-        'ID of the most expensive sale:'+idBestSales+"\n"+'Worst salesman ever:'+worstSalesman);      
-     console.log('The file was saved!');
+    var message = 'SalesMan: ' +salesMan+ '\nCustomers: ' +customers+ '\nID of the most expensive sale: ' +idBestSales+ '\nWorst salesman ever: ' +worstSalesman;
+    fs.appendFileSync(outputFilePath, message);      
+    console.log('The file was saved!');
   }  
   else
     throw err; 
