@@ -1,0 +1,15 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": ""
+  },
+  "devDependencies": {
+    "big-decimal": "latest",
+    "fs-extra": "latest",
+    "path": "latest"
+  },
+  "author": "mateus",
+}
