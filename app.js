@@ -9,12 +9,14 @@ fs.watch(inputFolderPath, () => {
   processFiles();
 });
 
-function processFiles() {
-  var salesMan = 0;
-  var customers = 0;
-  var bigSale = bigDecimal.ZERO;
-  var smallSale = bigDecimal.ZERO;
+function initializeVariables() {
+  return  salesMan = 0, customers = 0,
+          bigSale = bigDecimal.ZERO, smallSale = bigDecimal.ZERO,
+          salesManData = '001', customerData = '002', salesData = '003';    
+}
 
+function processFiles() {
+  initializeVariables();
   fs.readdir( inputFolderPath, (err, files) => { 
   if (!err) {
     for(var i in files) {
@@ -23,13 +25,13 @@ function processFiles() {
           var splitedLine = line.split('ç');
 
           switch (splitedLine[0]) {
-              case '001':
-                  salesMan +=1;
-                  break;
-              case '002':
-                  customers +=1;
-                  break;
-              case '003':
+              case salesManData:
+                   salesMan +=1;
+                   break;
+              case customerData:
+                   customers +=1;
+                   break;
+              case salesData:
                 var item = splitedLine[2].replace("[", "").replace("]", "").split(",");
                 var quantity = item[1].split("-");
                 var price = item[2].split("-");
