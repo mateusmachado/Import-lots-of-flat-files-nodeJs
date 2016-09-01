@@ -2,7 +2,7 @@ var fs = require('fs-extra');
 var path = require('path');
 var bigDecimal = require('big-decimal'); 
 var inputFolderPath = '/Users/mateus/Documents/repositorios/github/ilegraApp/in/';
-var outputFilePath = '/Users/mateus/Documents/repositorios/github/ilegraApp/out/flat_file_name.done.txt';
+var outputFilePath = '/Users/mateus/Documents/repositorios/github/ilegraApp/out/flat_file_name.done.dat';
 
 fs.watch(inputFolderPath, () => {
   fs.remove(outputFilePath);
