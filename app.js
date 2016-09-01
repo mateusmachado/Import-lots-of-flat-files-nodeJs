@@ -20,9 +20,9 @@ function processFiles() {
     for(var i in files) {
       if (path.extname(files[i]) === '.dat') {
           fs.readFileSync(inputFolderPath + files[i]).toString().split('\n').forEach((line) => { 
-          var sales = line.split('ç');
+          var splitedLine = line.split('ç');
 
-          switch (sales[0]) {
+          switch (splitedLine[0]) {
               case '001':
                   salesMan +=1;
                   break;
@@ -30,7 +30,7 @@ function processFiles() {
                   customers +=1;
                   break;
               case '003':
-                var item = sales[2].replace("[", "").replace("]", "").split(",");
+                var item = splitedLine[2].replace("[", "").replace("]", "").split(",");
                 var quantity = item[1].split("-");
                 var price = item[2].split("-");
                 var total = bigDecimal.ZERO;
@@ -41,12 +41,12 @@ function processFiles() {
 
                 if (total.compareTo(bigSale) == 1) {
                   bigSale = bigSale.add(total);
-                  idBestSales = sales[1];
+                  idBestSales = splitedLine[1];
                 }
 
                 if ((total.compareTo(smallSale) == -1) || (smallSale.compareTo(bigDecimal.ZERO) == 0)) {
                   smallSale = smallSale.add(total);
-                  worstSalesman = sales[3];
+                  worstSalesman = splitedLine[3];
                 }       
             }
           });
