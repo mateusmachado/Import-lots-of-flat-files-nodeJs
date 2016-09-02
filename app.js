@@ -15,7 +15,7 @@ function initializeVariables() {
           salesManData = '001', customerData = '002', salesData = '003';    
 }
 
-function endsWith(file) {
+function endsWithDatExtension(file) {
   return path.extname(file) === '.dat'
 }
 
@@ -24,7 +24,7 @@ function processFiles() {
   fs.readdir( inputFolderPath, (err, files) => { 
   if (!err) {
     for(var i in files) {
-      if (endsWith(files[i])) {
+      if (endsWithDatExtension(files[i])) {
           fs.readFileSync(inputFolderPath + files[i]).toString().split('\n').forEach((line) => { 
           var splitedLine = line.split('ç');
 
